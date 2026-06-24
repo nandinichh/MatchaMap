@@ -19,8 +19,7 @@ const SPEEDS = [
 ]
 
 export default function ControlPanel({
-  algorithm, speed, onAlgorithm, onSpeed, phase,
-  onLocate, locating, locateError,
+  algorithm, speed, onAlgorithm, onSpeed, phase, onLocate,
 }) {
   return (
     <div className="control-panel">
@@ -66,14 +65,13 @@ export default function ControlPanel({
 
       <div className="panel-section">
         <button
-          className={`locate-btn${locating ? ' loading' : ''}`}
+          className="locate-btn"
           onClick={onLocate}
-          disabled={locating || phase === 'loading' || phase === 'running'}
+          disabled={phase === 'loading' || phase === 'running'}
         >
-          <span className="locate-icon">◎</span>
-          {locating ? 'Getting location…' : 'Use My Location'}
+          <span className="locate-icon">🎓</span>
+          USC Village
         </button>
-        {locateError && <div className="locate-error">{locateError}</div>}
       </div>
 
       <div className="panel-section instructions">

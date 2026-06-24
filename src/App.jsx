@@ -4,6 +4,8 @@ import ControlPanel from './components/ControlPanel.jsx'
 import StatsPanel from './components/StatsPanel.jsx'
 import './App.css'
 
+const USC_VILLAGE = { lat: 34.0259, lng: -118.2853 }
+
 export default function App() {
   const [algorithm, setAlgorithm] = useState('dijkstra')
   const [speed, setSpeed] = useState('medium')
@@ -11,36 +13,14 @@ export default function App() {
   const [stats, setStats] = useState(null)
   const [phase, setPhase] = useState('idle')
 
-  // GPS state
   const [pendingLocation, setPendingLocation] = useState(null)
-  const [locating, setLocating] = useState(false)
-  const [locateError, setLocateError] = useState(null)
 
   const handleStatus = useCallback(s => setStatus(s), [])
   const handleStats = useCallback(s => setStats(s), [])
   const handlePhase = useCallback(p => setPhase(p), [])
   const handleLocationConsumed = useCallback(() => setPendingLocation(null), [])
 
-  const handleLocate = useCallback(() => {
-    if (!navigator.geolocation) {
-      setLocateError('Geolocation not supported.')
-      setTimeout(() => setLocateError(null), 3000)
-      return
-    }
-    setLocating(true)
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        setPendingLocation({ lng: pos.coords.longitude, lat: pos.coords.latitude })
-        setLocating(false)
-      },
-      err => {
-        setLocating(false)
-        setLocateError(err.code === 1 ? 'Location access denied.' : 'Could not get location.')
-        setTimeout(() => setLocateError(null), 3000)
-      },
-      { timeout: 10000 }
-    )
-  }, [])
+  const handleLocate = useCallback(() => setPendingLocation(USC_VILLAGE), [])
 
   return (
     <div className="app-root">
@@ -62,8 +42,6 @@ export default function App() {
           onSpeed={setSpeed}
           phase={phase}
           onLocate={handleLocate}
-          locating={locating}
-          locateError={locateError}
         />
       </div>
 
