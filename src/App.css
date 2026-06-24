@@ -1,0 +1,404 @@
+/* ════════════════════════════════════════
+   Layout
+   ════════════════════════════════════════ */
+.app-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay-left {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.overlay-right {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════
+   Control Panel
+   ════════════════════════════════════════ */
+.control-panel {
+  pointer-events: all;
+  background: #F7F4EE;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow-lg);
+  padding: 22px 22px 20px;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.panel-tea {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.panel-subtitle {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.panel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Algorithm options ── */
+.algo-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.algo-btn {
+  text-align: left;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  font-family: 'Jost', sans-serif;
+}
+
+.algo-btn:hover:not(:disabled) {
+  border-color: var(--sage-light);
+  background: var(--cream);
+}
+
+.algo-btn.active {
+  border-color: var(--sage);
+  background: #EEF5EC;
+  box-shadow: 0 0 0 3px rgba(107, 155, 101, 0.10);
+}
+
+.algo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.algo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.algo-btn.active .algo-name {
+  color: var(--sage-dark);
+}
+
+.algo-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Speed controls ── */
+.speed-row {
+  display: flex;
+  gap: 5px;
+}
+
+.speed-btn {
+  flex: 1;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 7px 4px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.speed-btn:hover {
+  border-color: var(--sage-light);
+  color: var(--sage-dark);
+}
+
+.speed-btn.active {
+  border-color: var(--sage);
+  background: #EEF5EC;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+
+/* ── Instructions ── */
+.instructions {
+  padding-top: 4px;
+}
+
+.instruction-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.step strong {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.step-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.start-dot { background: var(--sage); }
+.end-dot { background: var(--rust); }
+
+.step-icon {
+  flex-shrink: 0;
+  width: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  text-align: center;
+}
+
+/* ════════════════════════════════════════
+   Stats Panel
+   ════════════════════════════════════════ */
+.stats-panel {
+  pointer-events: all;
+  background: #F7F4EE;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow-lg);
+  padding: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.status-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.status-row.pulsing .status-emoji {
+  animation: pulse-glow 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.92); }
+}
+
+.status-emoji {
+  font-size: 18px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.status-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.stats-divider {
+  height: 1px;
+  background: var(--border-light);
+}
+
+.algo-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+.badge-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sage-dark);
+  letter-spacing: 0.01em;
+}
+
+.metrics-grid {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.metric-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.metric-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.metric-sep {
+  width: 1px;
+  height: 36px;
+  background: var(--border-light);
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+/* ── Locate button ── */
+.locate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-secondary);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.locate-btn:hover:not(:disabled) {
+  border-color: var(--sage-light);
+  color: var(--sage-dark);
+  background: #F0F6EE;
+}
+
+.locate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.locate-icon {
+  font-size: 15px;
+  line-height: 1;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.locate-btn.loading .locate-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.locate-error {
+  font-size: 11px;
+  color: var(--rust);
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ── Progress bar ── */
+.progress-bar-wrap {
+  height: 2px;
+  background: var(--border-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, var(--sage-light), var(--sage));
+  border-radius: 2px;
+  animation: progress-slide 1.2s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
